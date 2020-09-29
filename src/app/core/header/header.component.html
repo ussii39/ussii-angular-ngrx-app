@@ -1,0 +1,7 @@
+<div class="navbar">
+  <a routerLink="/" class="navbar-title">Angular Chat</a>
+  <a routerLink="signup" *ngIf="!login" class="navbar-login">新規作成</a>
+  <a routerLink="/" *ngIf="login" class="navbar-login" (click)="sublogout()"
+    >ログアウト</a
+  >
+</div>

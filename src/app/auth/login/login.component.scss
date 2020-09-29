@@ -1,0 +1,59 @@
+.page {
+  overflow: scroll;
+  height: 100%;
+  margin: 0 auto;
+  padding: 10px 0;
+  background-color: #fff;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+}
+
+.container {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.heading {
+  margin: 30px 0;
+}
+
+.form-group {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button[type="submit"] {
+  cursor: pointer;
+}
+
+.note {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.login-card {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+}
+.mat-card > :last-child:not(.mat-card-footer) {
+  margin-bottom: 0;
+  padding: 10px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-title {
+  font-weight: bold;
+  font-size: 22px;
+  color: #3f51b5;
+}
+.icon {
+  cursor: pointer;
+}

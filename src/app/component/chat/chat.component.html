@@ -1,0 +1,84 @@
+<div class="container">
+  <ng-container *ngIf="currentUser">
+    <ng-container *ngFor="let comment of comments; let i = index">
+      <div class="left-screen" *ngIf="comment.user.uid !== currentUser.uid">
+        <div class="name-icon">{{ comment.initial }}</div>
+        <div class="messeage-area">
+          {{ comment.user.displayName }}
+          {{ comment.messeage }}
+
+          <div class="date">{{ comment.date | date: "shortTime" }}</div>
+        </div>
+      </div>
+      <div class="right-screen" *ngIf="comment.user.uid === currentUser.uid">
+        <div class="right-name-icon">
+          {{ comment.initial }}
+        </div>
+
+        <div class="right-messeage-area">
+          <div class="right-messeage-area2">
+            <ng-container *ngIf="comment.user.uid === currentUser.uid">
+              {{ comment.user.name }}
+
+              <button class="edit-save" (click)="toggleEditComment(i)">
+                編集
+              </button>
+              <button class="edit-reject" (click)="deleteComment(comment.key)">
+                削除
+              </button>
+            </ng-container>
+          </div>
+
+          <div class="right-messeage">
+            {{ comment.messeage }}
+            <div class="right-date">{{ comment.date | date: "shortTime" }}</div>
+          </div>
+        </div>
+        <!-- <ng-container *ngIf="!comment.isEdit">
+          <div class="right-messeage"></div>
+        </ng-container> -->
+      </div>
+
+      <ng-container *ngIf="comment.isEdit">
+        <div class="input-group">
+          <input
+            class="form-cotrol"
+            [(ngModel)]="comment.messeage"
+            name="comment"
+            (input)="messeage = $event.target.value"
+            cols="30"
+            rows="10"
+          />
+        </div>
+        <div class="edit-buttons">
+          <button class="save-button" (click)="saveEditComment(i, comment.key)">
+            保存
+          </button>
+          <button class="cancel-button" (click)="toggleEditComment(i)">
+            キャンセル
+          </button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <button
+    class="button-area"
+    (click)="addComment(comment)"
+    [disabled]="!comment"
+  >
+    送信
+  </button>
+
+  <div class="form-area">
+    <form>
+      <textarea
+        name="comment"
+        [(ngModel)]="comment"
+        type="text"
+        class="form-content"
+        placeholder="メッセージを送信する"
+      ></textarea>
+    </form>
+  </div>
+</div>
