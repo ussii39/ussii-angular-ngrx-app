@@ -19,7 +19,10 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { StoreModule } from '@ngrx/store';
-// import { reducers } from './app.reducer';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { SidenavListComponent } from './core/side-nav/sidenav-list.component';
+import { reducers } from './app.reducer';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -27,22 +30,22 @@ import { StoreModule } from '@ngrx/store';
     ChatScreenComponent,
     ChatComponent,
     NotFindComponent,
-    SignUpComponent,
-    LoginComponent,
   ],
   imports: [
     AngularFireDatabaseModule,
+    FlexLayoutModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
     CommonModule,
     SharedModule,
     CoreModule,
+    AuthModule,
     AppRoutingModule,
     FormsModule,
     MaterialModule,
     BrowserAnimationsModule,
-    // StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers),
   ],
   providers: [],
   bootstrap: [AppComponent],
