@@ -2,6 +2,9 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  background: -moz-linear-gradient(top, #ffc778, rgba(255, 0, 0, 0.1));
+  background: -webkit-linear-gradient(top, #ffc778, rgba(255, 0, 0, 0.1));
+  background: linear-gradient(to bottom, #ffc778, rgba(255, 0, 0, 0.1));
 }
 
 .navbar-title {

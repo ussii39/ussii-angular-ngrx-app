@@ -1,4 +1,4 @@
-<div class="page">
+<!-- <div class="page">
   <div class="container">
     <form #f="ngForm" (ngSubmit)="signup(f)">
       <h2 class="heading text-center">アカウントを作成</h2>
@@ -45,4 +45,77 @@
       <a routerLink="/login" class="signup-link">ログインはこちら</a>
     </div>
   </div>
+</div> -->
+<div class="container">
+  <section class="signup-form">
+    <form
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px"
+      #f="ngForm"
+      (ngSubmit)="signup(f)"
+      class="form-area"
+    >
+      <mat-form-field>
+        <input
+          type="email"
+          matInput
+          placeholder="メールアドレス"
+          ngModel
+          name="email"
+          email
+          required
+          #emailInput="ngModel"
+        />
+        <mat-error *ngIf="emailInput.hasError('required')"
+          >このフィールドの入力は必須です</mat-error
+        >
+        <mat-error *ngIf="!emailInput.hasError('required')"
+          >このメールアドレスは使用できません</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field hintLabel="６文字以上に設定して下さい">
+        <input
+          type="password"
+          matInput
+          placeholder="パスワード"
+          ngModel
+          name="password"
+          required
+          minlength="6"
+          #pwInput="ngModel"
+        />
+        <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
+        <mat-error>最大６文字以上に設定して下さい</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="誕生日を設定して下さい"
+          [matDatepicker]="picker"
+          [max]="maxDate"
+          ngModel
+          name="birthdate"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-checkbox ngModel name="agree" required color="primary"
+        >同意しますか？</mat-checkbox
+      >
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="f.invalid"
+      >
+        送信
+      </button>
+      <a routerLink="/login" class="signup-link" routerLinkActive="action"
+        >ログインはこちら</a
+      >
+      <!-- <mat-spinner *ngIf="isLoading$ | async"></mat-spinner> -->
+    </form>
+  </section>
 </div>
