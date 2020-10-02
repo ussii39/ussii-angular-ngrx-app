@@ -18,17 +18,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  // login(f: NgForm): void {
-  //   this.authService.login(f.value.email, f.value.password);
+  login(f: NgForm): void {
+    this.authService.login(f.value.email, f.value.password);
+  }
+
+  // sublogin(f: NgForm) {
+  //   this.authService.sublogin();
   // }
 
-  sublogin(f: NgForm) {
-    this.authService.sublogin();
-  }
+  // onSubmit(loginForm: NgForm) {
+  //   this.authService.sublogin();
 
-  onSubmit(loginForm: NgForm) {
-    this.authService.sublogin();
-
-    console.log(this.keySet);
-  }
+  //   console.log(this.keySet);
+  // }
 }

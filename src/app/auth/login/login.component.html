@@ -41,11 +41,7 @@
     <mat-card-title class="login-title">ログイン</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form
-      (ngSubmit)="onSubmit(loginForm)"
-      class="login-form"
-      #loginForm="ngForm"
-    >
+    <form (ngSubmit)="login(f)" class="login-form" #f="ngForm">
       <mat-form-field>
         <input
           matInput
@@ -83,7 +79,7 @@
         type="submit"
         mat-raised-button
         color="primary"
-        [disabled]="loginForm.invalid"
+        [disabled]="f.invalid"
       >
         Login
       </button>

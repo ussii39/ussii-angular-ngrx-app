@@ -14,17 +14,17 @@ export class AuthService {
 
   constructor(private router: Router, private afAuth: AngularFireAuth) {}
 
-  sublogin() {
-    this.session.login = true;
-    this.sessionSubject.next(this.session);
-    this.router.navigate(['/']);
-  }
+  // sublogin() {
+  //   this.session.login = true;
+  //   this.sessionSubject.next(this.session);
+  //   this.router.navigate(['/']);
+  // }
 
-  sublogout() {
-    this.session.login = false;
-    this.sessionSubject.next(this.session);
-    this.router.navigate(['/login']);
-  }
+  // sublogout() {
+  //   this.session.login = false;
+  //   this.sessionSubject.next(this.session);
+  //   this.router.navigate(['/login']);
+  // }
 
   login(email: string, password: string): void {
     this.afAuth.auth
