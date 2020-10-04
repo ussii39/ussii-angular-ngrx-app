@@ -5,12 +5,14 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Session } from 'src/app/model/session..model';
+import { AuthData } from 'src/app/auth/auth-data-module';
 
 @Injectable()
 export class AuthService {
   session = new Session();
   sessionSubject = new Subject<Session>();
   sessionState = this.sessionSubject.asObservable();
+  loading: boolean = false;
 
   constructor(private router: Router, private afAuth: AngularFireAuth) {}
 
@@ -25,12 +27,20 @@ export class AuthService {
   //   this.sessionSubject.next(this.session);
   //   this.router.navigate(['/login']);
   // }
+  loadingStart() {
+    this.loading = true;
+  }
 
-  login(email: string, password: string): void {
+  loadingEnd() {
+    this.loading = false;
+  }
+  login(authData: AuthData): void {
     this.afAuth.auth
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(authData.email, authData.password)
       .then((user) => {
-        this.router.navigate(['/']);
+        this.session.login = true;
+        this.loading = true;
+        this.sessionSubject.next(this.session);
       })
       .catch((error) => console.error(error));
   }

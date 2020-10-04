@@ -3,7 +3,7 @@
     <mat-icon>face</mat-icon>
     <div class="nav-caption">新規登録</div>
   </a>
-  <a mat-list-item routerLink="/login" (click)="onClose()">
+  <a *ngIf="!login" mat-list-item routerLink="/login" (click)="onClose()">
     <mat-icon>input</mat-icon>
 
     <div class="nav-caption">ログイン</div></a
@@ -13,7 +13,7 @@
 
     <div class="nav-caption">訓練</div></a
   >
-  <a mat-list-item routerLink="/login" (click)="onClose()">
+  <a *ngIf="login" mat-list-item routerLink="/login" (click)="onClose()">
     <mat-icon>eject</mat-icon>
 
     <div class="nav-caption">ログアウト</div></a

@@ -1,9 +1,7 @@
 <div class="navbar">
-  <div fxHide.gt-xs>
-    <button mat-icon-button (click)="onToggleSidenav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
+  <button mat-icon-button (click)="onToggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
   <!-- <div>
     <a routerLink="/">NG Fitness</a>
   </div>
@@ -26,7 +24,11 @@
 
   <a routerLink="/" class="navbar-title"></a>
   <a routerLink="signup" *ngIf="!login" class="navbar-login">新規作成</a>
-  <a routerLink="/" *ngIf="login" class="navbar-login" (click)="sublogout()"
+  <a routerLink="/" *ngIf="login" class="navbar-login" (click)="logout()"
     >ログアウト</a
   >
+  <div class="blog" *ngIf="loading; else loaded">作者のblogに行く</div>
+  <ng-template #loaded>
+    <div>Loading......</div>
+  </ng-template>
 </div>

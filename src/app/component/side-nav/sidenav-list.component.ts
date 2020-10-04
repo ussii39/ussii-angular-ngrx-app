@@ -11,7 +11,7 @@ import { AuthService } from '../../core/service/auth.service';
 })
 export class SidenavListComponent implements OnInit {
   @Output() closeSidenav = new EventEmitter<void>();
-  isAuth$: Observable<boolean>;
+  login = false;
 
   constructor(
     private authService: AuthService,
@@ -19,7 +19,9 @@ export class SidenavListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isAuth$ = this.store.select(fromRoot.getIsAuth);
+    this.authService.sessionState.subscribe((session) => {
+      this.login = session.login;
+    });
   }
 
   onClose() {

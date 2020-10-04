@@ -19,8 +19,9 @@ import { StoreModule } from '@ngrx/store';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { reducers } from './app.reducer';
 import { AuthModule } from './auth/auth.module';
-import { TrainingComponent } from './component/both-traning/training.component';
-import { TrainingModule } from './component/training.module';
+import { TrainingModule } from './component/both-traning/training.module';
+import { AuthService } from './core/service/auth.service';
+import { UserService } from './core/service/user.service';
 
 @NgModule({
   declarations: [AppComponent, ChatComponent, NotFindComponent],
@@ -43,7 +44,7 @@ import { TrainingModule } from './component/training.module';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
-  providers: [],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
