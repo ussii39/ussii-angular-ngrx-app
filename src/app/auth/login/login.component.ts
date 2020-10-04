@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormControl, Validators } from '@angular/forms';
+import { NgForm, FormControl, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/core/service/auth.service';
 
 export class PrivateAPIKeySet {
@@ -12,23 +12,36 @@ export class PrivateAPIKeySet {
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
   keySet = new PrivateAPIKeySet('', '');
   hide = true;
   constructor(private authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', {
+        validators: [Validators.required, Validators.email],
+      }),
+      password: new FormControl('', {
+        validators: [Validators.required],
+      }),
+    });
+  }
 
-  // login(f: NgForm): void {
-  //   this.authService.login(f.value.email, f.value.password);
+  login() {
+    this.authService.login({
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    });
+  }
+
+  // sublogin(f: NgForm) {
+  //   this.authService.sublogin();
   // }
 
-  sublogin(f: NgForm) {
-    this.authService.sublogin();
-  }
+  // onSubmit(loginForm: NgForm) {
+  //   this.authService.sublogin();
 
-  onSubmit(loginForm: NgForm) {
-    this.authService.sublogin();
-
-    console.log(this.keySet);
-  }
+  //   console.log(this.keySet);
+  // }
 }
