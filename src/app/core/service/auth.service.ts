@@ -27,13 +27,7 @@ export class AuthService {
   //   this.sessionSubject.next(this.session);
   //   this.router.navigate(['/login']);
   // }
-  loadingStart() {
-    this.loading = true;
-  }
 
-  loadingEnd() {
-    this.loading = false;
-  }
   login(authData: AuthData): void {
     this.afAuth.auth
       .signInWithEmailAndPassword(authData.email, authData.password)
@@ -41,14 +35,19 @@ export class AuthService {
         this.session.login = true;
         this.loading = true;
         this.sessionSubject.next(this.session);
+        setTimeout(() => {
+          // ローディング終了
+          this.router.navigate(['/chat']);
+        }, 4000);
       })
       .catch((error) => console.error(error));
   }
 
-  logout(): void {
+  logout() {
     this.afAuth.auth
       .signOut()
       .then(() => {
+        this.sessionSubject.next(this.session.reset());
         this.router.navigate(['/login']);
       })
       .catch((error) => console.error(error));

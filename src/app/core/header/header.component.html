@@ -22,12 +22,12 @@
     </ul>
   </div> -->
 
-  <a routerLink="/" class="navbar-title"></a>
+  <a routerLink="/login" class="navbar-title"></a>
   <a routerLink="signup" *ngIf="!login" class="navbar-login">新規作成</a>
   <a routerLink="/" *ngIf="login" class="navbar-login" (click)="logout()"
     >ログアウト</a
   >
-  <div class="blog" *ngIf="loading; else loaded">作者のblogに行く</div>
+  <div class="blog" *ngIf="loading; else loaded" class="blog"></div>
   <ng-template #loaded>
     <div>Loading......</div>
   </ng-template>

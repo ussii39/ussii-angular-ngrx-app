@@ -12,7 +12,6 @@ import { AuthService } from '../../core/service/auth.service';
 export class SidenavListComponent implements OnInit {
   @Output() closeSidenav = new EventEmitter<void>();
   login = false;
-
   constructor(
     private authService: AuthService,
     private store: Store<fromRoot.State>

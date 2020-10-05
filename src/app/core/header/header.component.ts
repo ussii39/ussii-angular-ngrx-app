@@ -38,14 +38,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
       (session: Session) => {
         if (session) {
           this.login = session.login;
+
           console.log('開始');
           this.loading = false;
-
           setTimeout(() => {
             // ローディング終了
-            this.router.navigate(['/']);
             this.loading = true;
-          }, 2000);
+          }, 1000);
           console.log('終了');
         }
       }
@@ -59,8 +58,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.logout();
   }
   ngOnDestroy() {
-    this.loading = true;
-
     if (this.subscription) {
       this.subscription.unsubscribe();
     }

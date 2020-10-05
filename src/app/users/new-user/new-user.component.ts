@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { RouterLink, Route, Router } from '@angular/router';
 import { UserService } from 'src/app/core/service/user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from 'src/app/core/service/user.service';
   styleUrls: ['./new-user.component.scss'],
 })
 export class NewUserComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, public router: Router) {}
 
   ngOnInit(): void {}
 

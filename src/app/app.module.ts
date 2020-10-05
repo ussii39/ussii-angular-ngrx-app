@@ -22,9 +22,10 @@ import { AuthModule } from './auth/auth.module';
 import { TrainingModule } from './component/both-traning/training.module';
 import { AuthService } from './core/service/auth.service';
 import { UserService } from './core/service/user.service';
+import { MyNewPipePipe } from './my-new-pipe.pipe';
 
 @NgModule({
-  declarations: [AppComponent, ChatComponent, NotFindComponent],
+  declarations: [AppComponent, ChatComponent, NotFindComponent, MyNewPipePipe],
   imports: [
     AngularFireDatabaseModule,
     FlexLayoutModule,

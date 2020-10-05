@@ -1,19 +1,48 @@
 <mat-nav-list>
-  <a mat-list-item routerLink="/signup" (click)="onClose()">
+  <a
+    *ngIf="!login"
+    mat-list-item
+    routerLink="/signup"
+    routerLinkActive="active"
+    (click)="onClose()"
+  >
     <mat-icon>face</mat-icon>
     <div class="nav-caption">新規登録</div>
   </a>
-  <a *ngIf="!login" mat-list-item routerLink="/login" (click)="onClose()">
+  <a
+    *ngIf="!login"
+    mat-list-item
+    routerLink="/login"
+    routerLinkActive="active"
+    (click)="onClose()"
+  >
     <mat-icon>input</mat-icon>
 
     <div class="nav-caption">ログイン</div></a
   >
-  <a mat-list-item routerLink="/" (click)="onClose()">
+  <a
+    *ngIf="login"
+    mat-list-item
+    routerLink="/users/new"
+    routerLinkActive="active"
+    (click)="onClose()"
+  >
     <mat-icon>fitness_center</mat-icon>
 
-    <div class="nav-caption">訓練</div></a
+    <div class="nav-caption">プロフィールを編集する</div></a
   >
-  <a *ngIf="login" mat-list-item routerLink="/login" (click)="onClose()">
+  <a
+    *ngIf="login"
+    mat-list-item
+    routerLink="/chat"
+    routerLinkActive="active"
+    (click)="onClose()"
+  >
+    <mat-icon>eject</mat-icon>
+
+    <div class="nav-caption">チャットする</div></a
+  >
+  <a *ngIf="login" mat-list-item (click)="onLogout()">
     <mat-icon>eject</mat-icon>
 
     <div class="nav-caption">ログアウト</div></a

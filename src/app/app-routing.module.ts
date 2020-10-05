@@ -8,6 +8,7 @@ import { TrainingModule } from './component/both-traning/training.module';
 
 const routes: Routes = [
   { path: '', component: ChatComponent },
+  { path: 'chat', component: ChatComponent },
   { path: 'users', loadChildren: () => UsersModule },
   { path: 'training', loadChildren: () => TrainingModule },
   { path: '**', component: NotFindComponent },

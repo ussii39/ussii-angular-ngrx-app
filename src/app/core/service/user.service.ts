@@ -20,7 +20,7 @@ export class UserService {
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
         this.db.object(`/users/${user.id}`).set(new User(user));
-        this.router.navigate(['/users/new']);
+        this.router.navigate(['/login']);
       });
   }
 
